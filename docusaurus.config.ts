@@ -11,7 +11,7 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://www.qixinsoft.cn',
+  url: 'https://eontaop.github.io',
   baseUrl: '/',
 
   organizationName: 'jitakeji',

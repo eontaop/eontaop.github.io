@@ -1,0 +1,130 @@
+backend:
+  name: github
+  repo: eontaop/eontaop.github.io
+  branch: main
+  commit_messages:
+    create: '创建内容: {{slug}}'
+    update: '更新内容: {{slug}}'
+    delete: '删除内容: {{slug}}'
+    uploadMedia: '上传媒体: {{slug}}'
+    deleteMedia: '删除媒体: {{slug}}'
+
+# 当没有媒体库时，使用 GitHub 作为存储
+media_folder: "static/img/uploads"
+public_folder: "/img/uploads"
+
+# 允许编辑的文件
+format: "json"
+
+# 自定义入口
+site_url: https://eontaop.github.io
+display_url: https://eontaop.github.io
+logo_url: https://eontaop.github.io/img/logo.svg
+
+# 集合定义 - 可管理的静态配置
+collections:
+  # 产品功能配置
+  - name: "features"
+    label: "产品功能"
+    files:
+      - name: "features"
+        label: "功能模块"
+        file: "src/data/features.json"
+        fields:
+          - label: 功能模块列表
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "图标 (emoji)", name: "icon", widget: "string" }
+              - { label: "标题", name: "title", widget: "string" }
+              - { label: "颜色", name: "color", widget: "string" }
+              - { label: "背景色", name: "bg", widget: "string" }
+              - label: "功能项"
+                name: "items"
+                widget: "list"
+                field: { label: "功能", name: "item", widget: "string" }
+
+  # 解决方案配置
+  - name: "solutions"
+    label: "解决方案"
+    files:
+      - name: "solutions"
+        label: "行业解决方案"
+        file: "src/data/solutions.json"
+        fields:
+          - label: 解决方案列表
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "图标 (emoji)", name: "icon", widget: "string" }
+              - { label: "行业名称", name: "title", widget: "string" }
+              - { label: "描述", name: "desc", widget: "string" }
+
+  # 定价方案配置
+  - name: "pricing"
+    label: "定价方案"
+    files:
+      - name: "pricing"
+        label: "价格方案"
+        file: "src/data/pricing.json"
+        fields:
+          - label: 定价方案列表
+            name: "plans"
+            widget: "list"
+            fields:
+              - { label: "方案名称", name: "name", widget: "string" }
+              - { label: "价格", name: "price", widget: "string" }
+              - { label: "单位", name: "unit", widget: "string" }
+              - { label: "目标用户", name: "target", widget: "string" }
+              - { label: "设为推荐", name: "popular", widget: "boolean" }
+              - label: "功能列表"
+                name: "features"
+                widget: "list"
+                field: { label: "功能", name: "feature", widget: "string" }
+
+  # 客户案例配置
+  - name: "cases"
+    label: "客户案例"
+    files:
+      - name: "cases"
+        label: "案例列表"
+        file: "src/data/cases.json"
+        fields:
+          - label: 案例列表
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "公司名称", name: "company", widget: "string" }
+              - { label: "提升效果", name: "improvement", widget: "string" }
+              - { label: "描述", name: "desc", widget: "string" }
+
+  # 统计数据配置
+  - name: "stats"
+    label: "统计数据"
+    files:
+      - name: "stats"
+        label: "数据统计"
+        file: "src/data/stats.json"
+        fields:
+          - label: 数据统计列表
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "数值", name: "value", widget: "string" }
+              - { label: "标签", name: "label", widget: "string" }
+
+  # 媒体资源
+  - name: "media"
+    label: "媒体资源"
+    folder: "static/img/uploads"
+    create: true
+    slug: "{{slug}}-{{timestamp}}"
+    fields:
+      - label: "图片"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "描述"
+        name: "alt"
+        widget: "string"
+        required: false
